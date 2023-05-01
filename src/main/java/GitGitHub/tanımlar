@@ -1,0 +1,126 @@
+package Githup_Notes;
+public class day01 {
+    public static void main(String[] args){
+        /*Git - Github nedir?
+    Git versiyon kontrol sistemi iken,  Github bu sistemi kullanan depolama servisleri denilebilir.
+    1-Yazilim-uygulama gelistirme devam eden bir surectir. Tek seferde oldu bitti diyemeyiz.
+    Tamamlandiktan sonra bile guncelleme-bakim ihtiyaci hasil olabilir.Uygulamanin guncellemedeki herbir asamasina versiyon denilir.
+    Versiyonlarin kontrol ve takibini "Git" ile yapariz.
+    2-Versiyon kontrolunu yaptigimiz projemizi bulut sisteminde de depolamak istersek de "Github" kullaniriz.
+    Performans olarak daha hizli oldugu icin genellikle  "Github" kullanilir lakin bunlarin haricinde de depolama servisleri mevcuttur.
+        //VCS nedir?
+    Uzun bir surec icerisinde yapilmasi gereken projelerde bir sure calistiktan sonra, daha sonra uzerinde calismak uzere kaydetmek gerekebilir.
+    Farkli kaydederek ilerleyebiliriz. Orn: Odev1-Odev2-Odev3... yerine herbir guncellemede tarih atarak ilerlemek daha derli toplu bir calisma olmasina olanak saglar.
+    Projenin tarihcesini gelisim sistemini gorebilmek icin "VCS"(Versiyon Control System) kullanabiliriz.
+    -Zaman icerisinde yapilan degisiklikleri kontrol etmemize imkan tanir.
+    -Proje uzerinde en son degisiklik yapanin da tespitini saglar.
+    3 tip VCS vardir.
+    -Yerel(Local)      -Merkezi(Central)    -Dagitik(Distributed)
+    Local VCS --> Local pc de versiyonlari olusturup, kontrol etmemizi saglar. Lakin ortak calismaya imkan tanimaz.
+    Herkesin kendi bilgisayarindadir.
+    Central VCS --> Cloud sistemde olusturulan projelerde herkes farkli pc lerden sunucuya baglanarak proje uzerindeki gelistirmelerini yaparlar.
+    Lakin uzaktan baglantida elektrik kesildiginde veya sunucu coktugunde server'lara baglanma sorunu yasayabiliriz.
+    Tek bir ornek cloud da oldugu icin gelistirme durur.
+    Distributed VCS --> Hem yerel hem de merkezi VCS ozelliklerini barindirir. Offline olarak calismaya imkan saglar.
+    Cloud daki sunucuda proje olusturulur ve gelisitirici kendi bilgisayari
+    uzerine klon eder ve gelistirmelerini local de yaptiktan sonra tekrar cloud'a gonderir.
+    Birden fazla yerde depolama imkani oldugu icin birinin basina bir is gelse bile digerinde copy edip calismaya devam edilebilir.
+   ***git(Locale)                                           ****GitHub
+   -Lokalde versiyon yonetimi yapmak                        -Yedekleme (backup)
+   -Offline calisabilmek                                    -Proje paylasimi(share)
+   -Hatalari geri alabilmek                                 -Proje yayinlama (deploy)
+   -Versiyonlar arasinda gecis yapabilme                    -Ortak calisma imkani(collaboration)
+    -Git configuration
+    git config --global user.name"Ali Gel"
+    git config --global user.email"ali@gel.com"   ---> Repoda calisanlar bu isim ve e postayi gorur
+    buradaki bilgiler "key=value" seklinde saklanir.
+    git config --global color.ui true   ----> Terminalde komutlarin renklendirilmesini saglar
+    **System parametresi kullanildiginda tum kullanici ve tum repolari etkiler
+    **Global parametresi kullanicinin tum repolar uzerinde etkili olur
+    **Local parametresi sadece gecelerli repo uzerinde etkili olur
+    git config -list yapilan degisikliklerin goruntulenmesini saglar
+    git config -l  bu da  "git config -list" in kisayolu
+    -----Repository
+    Olusturdugumuz herbir projeyi VCS'ye tabi tutmak ve depolamak icin olusturdugumuz alan.Kisaca repo denir
+    -----git init
+    Local bilgisayarımızda bir projeyi versiyon sistemine alabilmek için git init komutu kullanılır.
+    Bu komut kullanılınca proje klasöründe .git klasörü oluşturulur. Bu, local repomuzu saklayacaktır.
+    ***Working Space(Calisma Alani)
+    .git klasorunun bulundugu calisma alani.Klasorler ve dosyalar uzerinden degisiklikler burada yapilir.
+    ***Staging Area (Gecici Toplanma Alani) - (Araf)
+    Versiyon olusturulacak olan dosya ve klasorlerin gecici olarak toplandigi yer. Version (commit) olusturulduktan sonra otomatik olarak stagigng area bosaltilir
+    ***Commit Store (Local Repo)
+    Git her bir commit i ayri bir version olarak tutar. Boylece yapilan degisikliklerden sonra bir sorun ortaya cikmasi halinde bir onceki commit e geri donulebilir
+    Bu alanlar arasinda geci yapmak icin;
+    Working Sapace -- git add(Eklemek istedigimiz dosya)  VEYA git add . ==> Staging Area'ya alinmasini saglar
+    Staging Area -- git commit -m"buraya istediginizi yazin"    ===> commitledik
+    git status ->projenin durumunu goruntulemek icin kullanilan komut
+    Her bir degisiklik yaptigimizda git add komutunu kullaniriz. Degisiklikten sonra bu komutu kullanmazsak "untracked" olarak gorunur.
+    git add . komutu tum degisiklikleri staging area'ya alir
+    git commit -am"buraya istediginiz mesaji yazin"  bu komut ile  ===> bu komutta git add .  ve git commit -m"buraya istediginiz mesaji yazin" birlikte kullanilmis olur.
+    git commit -am"" : add+commit birlikte kullaniriz.
+    ancak bu komut dosya icin en az bir kez git add kullanildiktan sonra calisir.
+    git log ===> simdiye kadar yapilan tum degisiklikleri, kimin ne zaman yaptigini ve olusturulan commitlerin Hashcode'larini gosterir
+    git commit --ament -m"buraya istediginizi yazin" ===> bu komut sadece en son olusturulan commit ismini degistirir
+    KOMUTLAR:
+        ===>git add(Eklemek istedigimiz dosya ve uzantisi) komutu yapilan degisiklikleri staging area'ya alir
+        ===>git add . komutu tum degisiklikleri staging area'ya alir
+        ===>git status ->Working Space ve Staging Area'daki projenin durumunu goruntulemek icin kullanilan komut
+        ****Her bir degisiklik yaptigimizda git add komutunu kullaniriz. Degisiklikten sonra bu komutu kullanmazsak "untracked" olarak gorunur.
+        ===> git commit -am"" : add+commit birlikte kullaniriz.Ancak bu komut dosya icin en az bir kez git add kullanildiktan sonra calisir.
+        NOTE: git commit -am"buraya istediginiz mesaji yazin"  bu komut ile  ===> bu komutta git add .  ve git commit -m"buraya istediginiz mesaji yazin" birlikte kullanilmis olur.
+        ===>git log         ---> simdiye kadar yapilan tum degisiklikleri, kimin ne zaman yaptigini ve olusturulan commitlerin Hashcode'larini gosterir
+        ===>git commit --ament -m"buraya istediginizi yazin"    ---> bu komut sadece en son olusturulan commit ismini degistirir
+
+        ===>git log --oneline       ===> Ihtiyac halinde kullandigimizda commitlerin Hash Code'larin ilk 7 karakterini verir
+        ====>git show       --->git show [Hash kodun ilk 7 karakteri] yapilan tum degisiklikleri en detayli haliyle gorebiliriz
+
+        ====>git restore[dosya]         --->Dosya Working Space'de iken bu dosyadaki son degisikligi iptal eder.
+        ====>git restore.           --->Dosya Working Space'de iken en son yapilan tum degisiklikleri iptal eder.
+        ===> git restore --staged[dosya]       --->Stage Area'daki tek bir dosyayı iptal eder, bir onceki asamaya (Working Space'e) gonderir.
+        ====> git restore --staged .            --->Stage Area'daki tüm dosyaları iptal eder
+        ====> git reset --hard                  ---->Working space deki değişiklikleri iptal eder, staging area yı boşaltır.
+        =====>git checkout [hash] .             -----> Dosya, hashcode ile belirtilen versiyona döner
+        =====>git checkout [hash] .             -----> Dosya, hashcode ile belirtilen versiyona döner.
+        Eger bu islemi kalici hale getirmek istersek     git commit -m"buraya ne istersen yaz"      yapmaliyiz
+        Önceki Versiyonlara Dönmek Icin
+        1. Yol Checkout:
+        =====>git checkout [hash] .             -----> Dosya, hashcode ile belirtilen versiyona döner.
+        Eger bu islemi kalici hale getirmek istersek     git commit -m"buraya ne istersen yaz"      yapmaliyiz
+        2. Yol Reset: (Bu yol sikintili kullanirken dikkatli olmak gerek)
+        =====>git reset --hard [hash]           ------> Geri alınamayacak şekilde önceki versiyona dönmek icin kullaniriz
+         Branch (Dal);
+                **Projemizi git init komutuyla Git ile iliskilendirdigimizde Git otomatik olarak bir "Master Branch" olusturur ve orada calismamiza imkan tanir.
+                **Yeni yapilacak update'lerde ana projeyi korumak ve daha saglikli calisma yapabilmemiz icin yeni bir branch uzerinde calismamiz gerekir.
+                Bu branch, master branch'in kopyasi uzerinde calismamiza imkan tanir. Eger update'ler ana projeye zarar vermiyorsa branch'den master branch'e geri aktarabiliriz.
+                Branch LERİN FAYDALARİ
+                oriinal kodların güvenligi saglanir
+                her developer kendi bölümünden sorumlu olur
+                daha hızlı geliştirme yapilir
+                daha az hata oluşur
+                organize kod yapisi saglanir
+                sorunlar daha hizli düzeltilir
+                kaos olmaz
+                yeni bir branch olusturmak icin git branch kendi ismimizi yaziyoruz. Daha sonra sadece git branch yazinca
+                bir master bir de kendi ismimizle adlandirdigimiz branch oldugunu gorduk. Ornek master ve zeynep
+                master yesil renkli ve yani basinda yildiz isareti var. Aktif olan master'dir. zeynep branch'ine gecis
+                yapmadik henuz.
+
+                Hangisinin yaninda yildiz isareti varsa aktif olan odur. Gecis icin git checkout zeynep
+                yazarak hangi branch'e gecmek istedigimizi belirttik ve ona gecis yaptik.
+                BRANCH KOMUTLARI :
+                ====>git branch [isim]          ---->Yeni branch oluşturur
+                NOTE : Hangi branch 'in yaninda * varsa o aktif branch'tir.
+                ====>git checkout [isim]        ---->Branch aktif hale gelir. //Branch isim degisikligi yapmak icin de kullaniriz.
+                ====>git merge [isim]           ---->İki branch i birleştirir
+
+                ====>git branch –d[isim]        ---->Branch i siler ***NOTE:Kendi bindimigimiz dali kesemeyiz baska branch'te iken silmek istedigimiz branch'in ismini yazmaliyiz
+
+                  Stashing:
+                        ***Working space ve staging area'daki (henüz commit haline gelmemiş) değişikliklerin geçici olarak geri alınması için stashing işlemi yapılır.//Daha sonra duzenleme yapmak
+                        uzere gecici olarak hafizaya alinmasini saglar.
+                        =====>git stash                 ---->Working space ve staging area daki değişiklikleri geçici olarak hafızaya alır ve bu bölgeleri temizler.
+                        =====>git stash list            ---->Hafızaya alınan değişiklikleri görmek için kullanılır.
+                        =====>git stash pop             ---->Hafızaya alınan değişiklikleri geri uygulamak için kullanılır.
+     */
+    }
