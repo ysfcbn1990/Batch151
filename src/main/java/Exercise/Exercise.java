@@ -1,4 +1,4 @@
-package javaders;
+package Exercise;
 
 public class Exercise {
     public static void main(String[] args) {
