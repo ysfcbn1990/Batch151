@@ -1,4 +1,4 @@
-package Githup_Notes;
+Package Githup_Notes;
 public class day01 {
     public static void main(String[] args){
         /*Git - Github nedir?

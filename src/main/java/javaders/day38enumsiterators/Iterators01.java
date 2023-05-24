@@ -55,7 +55,7 @@ public class Iterators01 {
         while(yourListItr.hasNext()){
             String el=yourListItr.next();
 
-            yourListItr.set(el+"!");//se() methodu List'i update etmeye yarar.
+            yourListItr.set(el+"!");//set() methodu List'i update etmeye yarar.
 
 
 

@@ -117,7 +117,7 @@ public class Lambda01 {
 
 
     //Example4)Verilen bir listteki çift sayı olan elemanların 7den küçük maximun değeri ile
-    // tek sayı olan elemanları 8 den büyük minimum değerinin toplamını hesaplayan methodu oluşturun
+    //    // tek sayı olan elemanları 8 den büyük minimum değerinin toplamını hesaplayan methodu oluşturun
 
     public static int ciftSayiYediKucukMaxTekSayiSekizdenBuyukMinToplami(List<Integer> nums) {
         int max = nums.stream().distinct().filter(t->t%2==0 && t<7).reduce((t,u)->t>u?t:u).get();
