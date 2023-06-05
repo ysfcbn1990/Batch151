@@ -51,5 +51,13 @@ public class Car {
         this.price = price;
     }
 
-
+    @Override
+    public String toString() {
+        return "Car{" +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", price=" + price +
+                '}';
+    }
 }

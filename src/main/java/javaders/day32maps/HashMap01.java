@@ -2,7 +2,8 @@ package javaders.day32maps;
 
 import java.util.HashMap;
 
-public class HashMap01 {
+public class
+HashMap01 {
     public static void main(String[] args) {
         /*
         keySet() methodu bize tum keyleri verir.
